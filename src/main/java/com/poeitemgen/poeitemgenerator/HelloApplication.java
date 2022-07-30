@@ -1,11 +1,15 @@
 package com.poeitemgen.poeitemgenerator;
 
+import com.poeitemgen.items.BodyArmor;
+import com.poeitemgen.items.modifiers.Prefix;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static javafx.application.Platform.exit;
 
 public class HelloApplication extends Application {
     @Override
@@ -19,6 +23,22 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 //        launch();
-        System.out.println("test test 1241f2");
+
+        BodyArmor armorTest = new BodyArmor("Random Armor 1");
+
+
+        armorTest.printItemText();
+
+        armorTest.addPrefix(new Prefix("Burning", 2, "Normal", 83));
+        armorTest.addPrefix(new Prefix("Leeching", 8, "Aisling", 25));
+        armorTest.addPrefix(new Prefix("Freezing", 5, "Normal", 156));
+
+        armorTest.printItemText();
+
+        armorTest.removePrefix();
+
+        armorTest.printItemText();
+
+        exit();
     }
 }
