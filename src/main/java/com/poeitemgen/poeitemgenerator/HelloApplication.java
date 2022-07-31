@@ -2,12 +2,16 @@ package com.poeitemgen.poeitemgenerator;
 
 import com.poeitemgen.items.BodyArmor;
 import com.poeitemgen.items.modifiers.Prefix;
+import com.poeitemgen.items.utils.LimitedModifierSet;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static javafx.application.Platform.exit;
 
@@ -26,18 +30,37 @@ public class HelloApplication extends Application {
 
         BodyArmor armorTest = new BodyArmor("Random Armor 1");
 
+        armorTest.addPrefix(new Prefix(
+                "Burning",
+                2,
+                "Normal",
+                83,
+                "Adds %s Fire Damage",
+                Arrays.asList(17,23)));
+
+        armorTest.addPrefix(new Prefix(
+                "Freezing",
+                8,
+                "Aisling",
+                21,
+                "Adds %s to %s Cold Damage",
+                Arrays.asList(45,51,72,79)));
+
+        armorTest.addPrefix(new Prefix(
+                "Freezing",
+                8,
+                "Aisling",
+                211,
+                "Adds %s to %s Cold Damage",
+                Arrays.asList(45,51,72,79)));
 
         armorTest.printItemText();
 
-        armorTest.addPrefix(new Prefix("Burning", 2, "Normal", 83));
-        armorTest.addPrefix(new Prefix("Leeching", 8, "Aisling", 25));
-        armorTest.addPrefix(new Prefix("Freezing", 5, "Normal", 156));
+        System.out.println(armorTest.getAllPrefixTypes());
+        System.out.println(armorTest.getAllPrefixGroupID());
 
-        armorTest.printItemText();
 
-        armorTest.removePrefix();
 
-        armorTest.printItemText();
 
         exit();
     }

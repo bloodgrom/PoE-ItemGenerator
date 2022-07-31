@@ -4,6 +4,8 @@ import com.poeitemgen.items.modifiers.Prefix;
 import com.poeitemgen.items.modifiers.Suffix;
 import com.poeitemgen.items.utils.LimitedModifierSet;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 abstract class Item {
@@ -78,11 +80,33 @@ abstract class Item {
         this.suffixSet = suffixSet;
     }
 
+
+
+    // ---------------------------------------------------------------------------------------------
+
+    // Regular Methods -------------------------------------------------------------------------------------
+    public void printItemText() {
+        System.out.println(getItemText());
+    }
+
     public void addPrefix(Prefix prefix) {
-        this.prefixSet.add(prefix);
+
+        boolean canAddVeiled = !((getAllPrefixTypes().contains("Aisling")) && (prefix.getPrefixType().equals("Aisling")));
+
+        if ((canAddVeiled) && (!getAllPrefixGroupID().contains(prefix.getPrefixGroupID()))) {
+            this.prefixSet.add(prefix);
+        }
+
     }
 
     public void addSuffix(Suffix suffix) {
+
+        boolean canAddVeiled = !((getAllSuffixTypes().contains("Aisling")) && (suffix.getSuffixType().equals("Aisling")));
+
+        if ((canAddVeiled) && (!getAllSuffixGroupID().contains(suffix.getSuffixGroupID()))) {
+            this.suffixSet.add(suffix);
+        }
+
         this.suffixSet.add(suffix);
     }
 
@@ -116,14 +140,47 @@ abstract class Item {
         }
     }
 
-    // ---------------------------------------------------------------------------------------------
+    public List<String> getAllPrefixTypes() {
+        List<String> prefixTypeList= new ArrayList<>();
 
-    // Regular Methods -------------------------------------------------------------------------------------
-    public void printItemText() {
-        System.out.println(getItemText());
-    };
+        for (Prefix prefix : prefixSet) {
+            prefixTypeList.add(prefix.getPrefixType());
+        }
 
-    // Abstract Methods
+        return prefixTypeList;
+    }
+
+    public List<Integer> getAllPrefixGroupID() {
+        List<Integer> prefixGroupIDList= new ArrayList<>();
+
+        for (Prefix prefix : prefixSet) {
+            prefixGroupIDList.add(prefix.getPrefixGroupID());
+        }
+
+        return prefixGroupIDList;
+    }
+
+    public List<String> getAllSuffixTypes() {
+        List<String> suffixTypeList= new ArrayList<>();
+
+        for (Suffix suffix : suffixSet) {
+            suffixTypeList.add(suffix.getSuffixType());
+        }
+
+        return suffixTypeList;
+    }
+
+    public List<Integer> getAllSuffixGroupID() {
+        List<Integer> suffixGroupIDList= new ArrayList<>();
+
+        for (Suffix suffix : suffixSet) {
+            suffixGroupIDList.add(suffix.getSuffixGroupID());
+        }
+
+        return suffixGroupIDList;
+    }
+
+    // Abstract Methods ----------------------------------------------------------------------------
     public abstract String getItemText();
 
     // ---------------------------------------------------------------------------------------------

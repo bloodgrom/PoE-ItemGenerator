@@ -1,5 +1,8 @@
 package com.poeitemgen.items.modifiers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Prefix {
 
     // Declare fields ------------------------------------------------------------------------------
@@ -7,15 +10,19 @@ public class Prefix {
     public int prefixTier = 1;
     public String prefixType = "";
     public int prefixGroupID = 1;
+    public String prefixText = "";
+    public List<Integer> prefixValues = new ArrayList<Integer>();
 
     // ---------------------------------------------------------------------------------------------
 
     // Constructors --------------------------------------------------------------------------------
-    public Prefix(String prefixName, int prefixTier, String prefixType, int prefixGroupID) {
+    public Prefix(String prefixName, int prefixTier, String prefixType, int prefixGroupID, String prefixText, List<Integer> prefixValues) {
         this.prefixName = prefixName;
         this.prefixTier = prefixTier;
         this.prefixType = prefixType;
         this.prefixGroupID = prefixGroupID;
+        this.prefixText = prefixText;
+        this.prefixValues = prefixValues;
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -53,10 +60,41 @@ public class Prefix {
         this.prefixGroupID = prefixGroupID;
     }
 
+    public List<Integer> getPrefixValues() {
+        return prefixValues;
+    }
+
+    public void setPrefixValues(List<Integer> prefixValues) {
+        this.prefixValues = prefixValues;
+    }
+
+    public String getPrefixText() {
+        return prefixText;
+    }
+
+    public void setPrefixText(String prefixText) {
+        this.prefixText = prefixText;
+    }
     // ---------------------------------------------------------------------------------------------
 
     //Methods --------------------------------------------------------------------------------------
     public String toString(){
-        return "\"" + getPrefixName() + "\"(Tier " + String.valueOf(getPrefixTier() + ")");
+
+        String prefixValuesString1 = "";
+        String prefixValuesString2 = "";
+        String prefixValuesStringComplete = getPrefixText();
+        List<Integer> prefixValues = getPrefixValues();
+
+        if (prefixValues.size() == 2) {
+            prefixValuesString1 = "(" + prefixValues.get(0) + " - " + prefixValues.get(1) + ")";
+            prefixValuesStringComplete =String.format(prefixValuesStringComplete, prefixValuesString1);
+        }
+        if (prefixValues.size() == 4) {
+            prefixValuesString1 = "(" + prefixValues.get(0) + " - " + prefixValues.get(1) + ")";
+            prefixValuesString2 = "(" + prefixValues.get(2) + " - " + prefixValues.get(3) + ")";
+            prefixValuesStringComplete =String.format(prefixValuesStringComplete, prefixValuesString1, prefixValuesString2);
+        }
+
+        return "\"" + getPrefixName() + "\"(Tier " + getPrefixTier() + ") " + prefixValuesStringComplete;
     }
 }

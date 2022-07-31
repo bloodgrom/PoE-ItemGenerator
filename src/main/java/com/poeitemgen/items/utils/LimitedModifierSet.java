@@ -1,7 +1,8 @@
 package com.poeitemgen.items.utils;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
-public class LimitedModifierSet<E> extends HashSet<E> {
+public class LimitedModifierSet<E> extends LinkedHashSet<E> {
 
     private final int limit;
 
@@ -11,7 +12,7 @@ public class LimitedModifierSet<E> extends HashSet<E> {
 
     @Override
     public boolean add(E object) {
-        if (this.size() > limit) return false;
+        if (this.size() + 1 > limit) return false;
         return super.add(object);
     }
 
