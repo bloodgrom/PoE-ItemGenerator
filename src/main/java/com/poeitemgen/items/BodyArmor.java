@@ -141,14 +141,14 @@ public class BodyArmor extends Item{
                 //Item name
                 this.getItemName() + "\n" +
                 "--------------------------" + "\n" +
-                //Item rarity
-                this.getItemRarity() + "\n" +
+                //Armor type
+                this.getArmorTypeName() + "\n" +
                 "--------------------------" + "\n" +
                 //Item level
                 this.getItemLevel() + "\n" +
                 "--------------------------" + "\n" +
-                //Armor type
-                this.getArmorTypeName() + "\n" +
+                //Item rarity
+                this.getItemRarity() + "\n" +
                 "--------------------------" + "\n" +
                 //Armor values
                 armorValues +
