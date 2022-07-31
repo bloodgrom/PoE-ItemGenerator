@@ -132,6 +132,11 @@ public class BodyArmor extends Item{
                 prefixString.append(prefix.toString(descriptionType)).append("\n");
             }
 
+        StringBuilder suffixString = new StringBuilder();
+        for (Suffix suffix: this.suffixSet) {
+            suffixString.append(suffix.toString(descriptionType)).append("\n");
+        }
+
         String itemFullString =
                 //Item name
                 this.getItemName() + "\n" +
@@ -150,6 +155,9 @@ public class BodyArmor extends Item{
                 "--------------------------" + "\n" +
                 //Prefixes
                 prefixString +
+                "--------------------------"  + "\n" +
+                //Suffixes
+                suffixString +
                 "--------------------------"  + "\n";
 
         return itemFullString;

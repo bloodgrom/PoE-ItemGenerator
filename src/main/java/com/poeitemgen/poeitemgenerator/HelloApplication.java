@@ -2,6 +2,7 @@ package com.poeitemgen.poeitemgenerator;
 
 import com.poeitemgen.items.BodyArmor;
 import com.poeitemgen.items.modifiers.Prefix;
+import com.poeitemgen.items.modifiers.Suffix;
 import com.poeitemgen.items.utils.LimitedModifierSet;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +30,8 @@ public class HelloApplication extends Application {
 //        launch();
 
         BodyArmor armorTest = new BodyArmor("Random Armor 1");
+
+        armorTest.setItemRarity("Rare");
 
         armorTest.addPrefix(new Prefix(
                 "Burning",
@@ -60,11 +63,31 @@ public class HelloApplication extends Application {
                 "None",
                 Arrays.asList(45,51,72,79)));
 
+        armorTest.addSuffix(new Suffix(
+                "Bleeding",
+                100,
+                2,
+                "Normal",
+                15,
+                "Adds %s%% chance to Bleed",
+                "None",
+                Arrays.asList(25,30)));
+
+        armorTest.addSuffix(new Suffix(
+                "Pulsing",
+                100,
+                3,
+                "Normal",
+                87,
+                "Adds %s Pulsing Damage",
+                "None",
+                Arrays.asList(75,83)));
+
+
         armorTest.printItemText("Normal");
 
         System.out.println(armorTest.getAllPrefixTypes());
         System.out.println(armorTest.getAllPrefixGroupID());
-
 
 
 

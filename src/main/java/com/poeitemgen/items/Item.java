@@ -99,25 +99,27 @@ abstract class Item {
 
     public void addPrefix(Prefix prefix) {
 
-        boolean canAddVeiled = !((getAllPrefixTypes().contains("Aisling")) && (prefix.getPrefixType().equals("Aisling")));
+        boolean canAddVeiled = !(((getAllPrefixTypes().contains("Aisling")) || (getAllSuffixTypes().contains("Aisling"))) && (prefix.getPrefixType().equals("Aisling")));
+        boolean doesAlreadyExist = getAllPrefixGroupID().contains(prefix.getPrefixGroupID());
+        boolean isItemLevelEnough = !(prefix.getPrefixItemLevel() > getItemLevel());
+        boolean isSpaceAvailable = !(getItemRarity().equals("Magic") && getPrefixSet().size() >= 1);
 
-        if ((canAddVeiled) && (!getAllPrefixGroupID().contains(prefix.getPrefixGroupID()))) {
-            if (!(prefix.getPrefixItemLevel() > getItemLevel())) {
-                this.prefixSet.add(prefix);
-            }
+        if ((canAddVeiled) && (!doesAlreadyExist) && (isItemLevelEnough) && (isSpaceAvailable)) {
+            this.prefixSet.add(prefix);
         }
 
     }
 
     public void addSuffix(Suffix suffix) {
 
-        boolean canAddVeiled = !((getAllSuffixTypes().contains("Aisling")) && (suffix.getSuffixType().equals("Aisling")));
+        boolean canAddVeiled = !(((getAllPrefixTypes().contains("Aisling")) || (getAllSuffixTypes().contains("Aisling"))) && (suffix.getSuffixType().equals("Aisling")));
+        boolean doesAlreadyExist = getAllSuffixGroupID().contains(suffix.getSuffixGroupID());
+        boolean isItemLevelEnough = !(suffix.getSuffixItemLevel() > getItemLevel());
+        boolean isSpaceAvailable = !(getItemRarity().equals("Magic") && getSuffixSet().size() >= 1);
 
-        if ((canAddVeiled) && (!getAllSuffixGroupID().contains(suffix.getSuffixGroupID()))) {
+        if ((canAddVeiled) && (!doesAlreadyExist) && (isItemLevelEnough) && (isSpaceAvailable)) {
             this.suffixSet.add(suffix);
         }
-
-        this.suffixSet.add(suffix);
     }
 
     public void removePrefix() {
