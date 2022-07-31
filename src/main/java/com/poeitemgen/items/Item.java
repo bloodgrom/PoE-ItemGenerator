@@ -18,6 +18,8 @@ abstract class Item {
     LimitedModifierSet<Prefix> prefixSet = new LimitedModifierSet<>(3);
     LimitedModifierSet<Suffix> suffixSet = new LimitedModifierSet<>(3);
 
+    LimitedModifierSet<String> influenceSet = new LimitedModifierSet<>(2);
+
     // Constructors --------------------------------------------------------------------------------
     Item(String itemName) {
         this.itemName = itemName;
@@ -80,13 +82,19 @@ abstract class Item {
         this.suffixSet = suffixSet;
     }
 
+    public LimitedModifierSet<String> getInfluenceSet() {
+        return influenceSet;
+    }
 
+    public void setInfluenceSet(LimitedModifierSet<String> influenceSet) {
+        this.influenceSet = influenceSet;
+    }
 
     // ---------------------------------------------------------------------------------------------
 
     // Regular Methods -------------------------------------------------------------------------------------
-    public void printItemText() {
-        System.out.println(getItemText());
+    public void printItemText(String descriptionType) {
+        System.out.println(getItemText(descriptionType));
     }
 
     public void addPrefix(Prefix prefix) {
@@ -94,7 +102,9 @@ abstract class Item {
         boolean canAddVeiled = !((getAllPrefixTypes().contains("Aisling")) && (prefix.getPrefixType().equals("Aisling")));
 
         if ((canAddVeiled) && (!getAllPrefixGroupID().contains(prefix.getPrefixGroupID()))) {
-            this.prefixSet.add(prefix);
+            if (!(prefix.getPrefixItemLevel() > getItemLevel())) {
+                this.prefixSet.add(prefix);
+            }
         }
 
     }
@@ -181,7 +191,7 @@ abstract class Item {
     }
 
     // Abstract Methods ----------------------------------------------------------------------------
-    public abstract String getItemText();
+    public abstract String getItemText(String descriptionType);
 
     // ---------------------------------------------------------------------------------------------
 }

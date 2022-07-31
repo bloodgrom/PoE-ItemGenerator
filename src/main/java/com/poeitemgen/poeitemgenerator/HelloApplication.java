@@ -32,29 +32,35 @@ public class HelloApplication extends Application {
 
         armorTest.addPrefix(new Prefix(
                 "Burning",
+                15,
                 2,
                 "Normal",
                 83,
                 "Adds %s Fire Damage",
+                "None",
                 Arrays.asList(17,23)));
 
         armorTest.addPrefix(new Prefix(
                 "Freezing",
+                25,
                 8,
                 "Aisling",
                 21,
                 "Adds %s to %s Cold Damage",
+                "None",
                 Arrays.asList(45,51,72,79)));
 
         armorTest.addPrefix(new Prefix(
                 "Freezing",
+                19,
                 8,
                 "Aisling",
                 211,
                 "Adds %s to %s Cold Damage",
+                "None",
                 Arrays.asList(45,51,72,79)));
 
-        armorTest.printItemText();
+        armorTest.printItemText("Normal");
 
         System.out.println(armorTest.getAllPrefixTypes());
         System.out.println(armorTest.getAllPrefixGroupID());

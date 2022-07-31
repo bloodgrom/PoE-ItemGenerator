@@ -7,21 +7,25 @@ public class Prefix {
 
     // Declare fields ------------------------------------------------------------------------------
     public String prefixName = "";
+    public int prefixItemLevel = 1;
     public int prefixTier = 1;
     public String prefixType = "";
     public int prefixGroupID = 1;
     public String prefixText = "";
+    public String prefixInfluenceType = "None";
     public List<Integer> prefixValues = new ArrayList<Integer>();
 
     // ---------------------------------------------------------------------------------------------
 
     // Constructors --------------------------------------------------------------------------------
-    public Prefix(String prefixName, int prefixTier, String prefixType, int prefixGroupID, String prefixText, List<Integer> prefixValues) {
+    public Prefix(String prefixName,int prefixItemLevel ,int prefixTier, String prefixType, int prefixGroupID, String prefixText, String prefixInfluenceType, List<Integer> prefixValues) {
         this.prefixName = prefixName;
+        this.prefixItemLevel = prefixItemLevel;
         this.prefixTier = prefixTier;
         this.prefixType = prefixType;
         this.prefixGroupID = prefixGroupID;
         this.prefixText = prefixText;
+        this.prefixInfluenceType = prefixInfluenceType;
         this.prefixValues = prefixValues;
     }
 
@@ -75,10 +79,19 @@ public class Prefix {
     public void setPrefixText(String prefixText) {
         this.prefixText = prefixText;
     }
+
+    public int getPrefixItemLevel() {
+        return prefixItemLevel;
+    }
+
+    public void setPrefixItemLevel(int prefixItemLevel) {
+        this.prefixItemLevel = prefixItemLevel;
+    }
+
     // ---------------------------------------------------------------------------------------------
 
     //Methods --------------------------------------------------------------------------------------
-    public String toString(){
+    public String toString(String descriptionType){
 
         String prefixValuesString1 = "";
         String prefixValuesString2 = "";
@@ -95,6 +108,11 @@ public class Prefix {
             prefixValuesStringComplete =String.format(prefixValuesStringComplete, prefixValuesString1, prefixValuesString2);
         }
 
-        return "\"" + getPrefixName() + "\"(Tier " + getPrefixTier() + ") " + prefixValuesStringComplete;
+        if (descriptionType.equals("Advanced")) {
+            return "\"" + getPrefixName() + "\"(Tier " + getPrefixTier() + ") " + prefixValuesStringComplete;
+        }
+        else {
+            return prefixValuesStringComplete;
+        }
     }
 }

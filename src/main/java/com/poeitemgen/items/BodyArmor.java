@@ -110,26 +110,26 @@ public class BodyArmor extends Item{
         return VALUES.get(RANDOM.nextInt(SIZE));
     }
 
-    public String getItemText() {
+    public String getItemText(String descriptionType) {
         String armorValues = "";
 
         //Armor values
         if (this.getArmorValue() > 0) {
-            armorValues += "Armor: " + String.valueOf(this.getArmorValue()) + "\n";
+            armorValues += "Armor: " + this.getArmorValue() + "\n";
         }
         if (this.getEnergyShieldValue() > 0) {
-            armorValues += "Energy Shield: " + String.valueOf(this.getEnergyShieldValue()) + "\n";
+            armorValues += "Energy Shield: " + this.getEnergyShieldValue() + "\n";
         }
         if (this.getEvasionValue() > 0) {
-            armorValues += "Evasion: " + String.valueOf(this.getEvasionValue()) + "\n";
+            armorValues += "Evasion: " + this.getEvasionValue() + "\n";
         }
         if (this.getWardValue() > 0) {
-            armorValues += "Ward: " + String.valueOf(this.getWardValue()) + "\n";
+            armorValues += "Ward: " + this.getWardValue() + "\n";
         }
 
         StringBuilder prefixString = new StringBuilder();
             for (Prefix prefix: this.prefixSet) {
-                prefixString.append(prefix.toString()).append("\n");
+                prefixString.append(prefix.toString(descriptionType)).append("\n");
             }
 
         String itemFullString =
