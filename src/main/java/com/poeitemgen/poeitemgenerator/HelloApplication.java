@@ -25,11 +25,9 @@ public class HelloApplication extends Application {
     public static void main(String[] args) throws Exception {
 //        launch();
 
-        BodyArmour armourTest = new BodyArmour("Random Armour 1");
-
         Item generatedItem = MainGenerator.generateItem("Armour", 75, "Rare");
 
-        generatedItem.printItemText("Advanced");
+        generatedItem.printItemText("Normal");
 
 
         exit();

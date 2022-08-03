@@ -3,7 +3,7 @@ package com.poeitemgen.items.modifiers;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Prefix {
+public class Prefix extends Modifier{
 
     // Declare fields ------------------------------------------------------------------------------
     public String prefixName = "";
