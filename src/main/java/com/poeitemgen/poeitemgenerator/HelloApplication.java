@@ -1,18 +1,14 @@
 package com.poeitemgen.poeitemgenerator;
 
-import com.poeitemgen.items.BodyArmor;
-import com.poeitemgen.items.modifiers.Prefix;
-import com.poeitemgen.items.modifiers.Suffix;
-import com.poeitemgen.items.utils.LimitedModifierSet;
+import com.poeitemgen.generators.MainGenerator;
+import com.poeitemgen.items.BodyArmour;
+import com.poeitemgen.items.Item;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static javafx.application.Platform.exit;
 
@@ -26,69 +22,14 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        launch();
 
-        BodyArmor armorTest = new BodyArmor("Random Armor 1");
+        BodyArmour armourTest = new BodyArmour("Random Armour 1");
 
-        armorTest.setItemRarity("Rare");
+        Item generatedItem = MainGenerator.generateItem("Armour", 75, "Rare");
 
-        armorTest.addPrefix(new Prefix(
-                "Burning",
-                15,
-                2,
-                "Normal",
-                83,
-                "Adds %s Fire Damage",
-                "None",
-                Arrays.asList(17,23)));
-
-        armorTest.addPrefix(new Prefix(
-                "Freezing",
-                25,
-                8,
-                "Aisling",
-                21,
-                "Adds %s to %s Cold Damage",
-                "None",
-                Arrays.asList(45,51,72,79)));
-
-        armorTest.addPrefix(new Prefix(
-                "Freezing",
-                19,
-                8,
-                "Aisling",
-                211,
-                "Adds %s to %s Cold Damage",
-                "None",
-                Arrays.asList(45,51,72,79)));
-
-        armorTest.addSuffix(new Suffix(
-                "Bleeding",
-                100,
-                2,
-                "Normal",
-                15,
-                "Adds %s%% chance to Bleed",
-                "None",
-                Arrays.asList(25,30)));
-
-        armorTest.addSuffix(new Suffix(
-                "Pulsing",
-                100,
-                3,
-                "Normal",
-                87,
-                "Adds %s Pulsing Damage",
-                "None",
-                Arrays.asList(75,83)));
-
-
-        armorTest.printItemText("Normal");
-
-        System.out.println(armorTest.getAllPrefixTypes());
-        System.out.println(armorTest.getAllPrefixGroupID());
-
+        generatedItem.printItemText("Advanced");
 
 
         exit();

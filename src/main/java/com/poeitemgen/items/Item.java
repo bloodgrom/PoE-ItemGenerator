@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-abstract class Item {
+public abstract class Item {
 
     // Declare fields ------------------------------------------------------------------------------
     String itemName = "";

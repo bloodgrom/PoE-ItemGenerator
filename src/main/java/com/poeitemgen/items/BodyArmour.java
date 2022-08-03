@@ -2,75 +2,75 @@ package com.poeitemgen.items;
 
 import com.poeitemgen.items.modifiers.Prefix;
 import com.poeitemgen.items.modifiers.Suffix;
-import com.poeitemgen.items.utils.LimitedModifierSet;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
-public class BodyArmor extends Item{
+public class BodyArmour extends Item{
 
     // Declare fields ------------------------------------------------------------------------------
-    private final ArmorType armorType;
+    private final ArmourType armourType;
 
-    public enum ArmorType {
-        ARMOR("Armor"),
-        SHIELD("Energy Shield"),
-        EVASION("Evasion"),
-        WARD("Ward"),
-        ARMORSHIELD("Armor/Energy Shield"),
-        ARMOREVASION("Armor/Evasion"),
-        SHIELDEVASION("Energy Shield/Evasion"),
-        ARMORSHIELDEVASION("Armor/Energy Shield/Evasion");
+    public enum ArmourType {
+        ARMOUR("Armour");
+//        SHIELD("Energy Shield"),
+//        EVASION("Evasion"),
+//        WARD("Ward"),
+//        ARMOURSHIELD("Armour/Energy Shield"),
+//        ARMOUREVASION("Armour/Evasion"),
+//        SHIELDEVASION("Energy Shield/Evasion"),
+//        ARMOURSHIELDEVASION("Armour/Energy Shield/Evasion");
 
-        private final String armorTypeText;
+        private final String armourTypeText;
 
-        ArmorType(String armorTypeText) {
-            this.armorTypeText = armorTypeText;
+        ArmourType(String armourTypeText) {
+            this.armourTypeText = armourTypeText;
         }
 
         public String getString() {
-            return armorTypeText;
+            return armourTypeText;
         }
     }
 
-    int armorValue = 652;
+    int armourValue = 652;
     int energyShieldValue = 119;
     int evasionValue = 0;
     int wardValue = 0;
+    String baseType = "";
 
     // ---------------------------------------------------------------------------------------------
 
 
     // Constructors --------------------------------------------------------------------------------
-    public BodyArmor(String itemName, ArmorType armorType) {
+    public BodyArmour(String itemName, ArmourType armourType) {
         super(itemName);
-        this.armorType = armorType;
+        this.armourType = armourType;
+        this.baseType = armourType.getString();
     }
 
-    public BodyArmor(String itemName) {
+    public BodyArmour(String itemName) {
         super(itemName);
-        this.armorType = randomArmorType();
+        this.armourType = randomArmourType();
+        this.baseType = this.armourType.getString();
     }
 
     // ---------------------------------------------------------------------------------------------
 
     // Getters & Setters ---------------------------------------------------------------------------
-    public ArmorType getArmorType() {
-        return armorType;
+    public ArmourType getArmourType() {
+        return armourType;
     }
 
-    public String getArmorTypeName() {
-        return armorType.getString();
+    public String getArmourTypeName() {
+        return armourType.getString();
     }
 
-    public int getArmorValue() {
-        return armorValue;
+    public int getArmourValue() {
+        return armourValue;
     }
 
-    public void setArmorValue(int armorValue) {
-        this.armorValue = armorValue;
+    public void setArmourValue(int armourValue) {
+        this.armourValue = armourValue;
     }
 
     public int getEnergyShieldValue() {
@@ -97,34 +97,40 @@ public class BodyArmor extends Item{
         this.wardValue = wardValue;
     }
 
+    public String getBaseType() {
+        return baseType;
+    }
 
+    public void setBaseType(String baseType) {
+        this.baseType = baseType;
+    }
 
-    // ---------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------
 
     // Methods -------------------------------------------------------------------------------------
-    private static final List<ArmorType> VALUES = List.of(ArmorType.values());
+    private static final List<ArmourType> VALUES = List.of(ArmourType.values());
     private static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
 
-    public static ArmorType randomArmorType()  {
+    public static ArmourType randomArmourType()  {
         return VALUES.get(RANDOM.nextInt(SIZE));
     }
 
     public String getItemText(String descriptionType) {
-        String armorValues = "";
+        String armourValues = "";
 
-        //Armor values
-        if (this.getArmorValue() > 0) {
-            armorValues += "Armor: " + this.getArmorValue() + "\n";
+        //Armour values
+        if (this.getArmourValue() > 0) {
+            armourValues += "Armour: " + this.getArmourValue() + "\n";
         }
         if (this.getEnergyShieldValue() > 0) {
-            armorValues += "Energy Shield: " + this.getEnergyShieldValue() + "\n";
+            armourValues += "Energy Shield: " + this.getEnergyShieldValue() + "\n";
         }
         if (this.getEvasionValue() > 0) {
-            armorValues += "Evasion: " + this.getEvasionValue() + "\n";
+            armourValues += "Evasion: " + this.getEvasionValue() + "\n";
         }
         if (this.getWardValue() > 0) {
-            armorValues += "Ward: " + this.getWardValue() + "\n";
+            armourValues += "Ward: " + this.getWardValue() + "\n";
         }
 
         StringBuilder prefixString = new StringBuilder();
@@ -141,8 +147,8 @@ public class BodyArmor extends Item{
                 //Item name
                 this.getItemName() + "\n" +
                 "--------------------------" + "\n" +
-                //Armor type
-                this.getArmorTypeName() + "\n" +
+                //Armour type
+                this.getBaseType() + "\n" +
                 "--------------------------" + "\n" +
                 //Item level
                 this.getItemLevel() + "\n" +
@@ -150,8 +156,8 @@ public class BodyArmor extends Item{
                 //Item rarity
                 this.getItemRarity() + "\n" +
                 "--------------------------" + "\n" +
-                //Armor values
-                armorValues +
+                //Armour values
+                armourValues +
                 "--------------------------" + "\n" +
                 //Prefixes
                 prefixString +

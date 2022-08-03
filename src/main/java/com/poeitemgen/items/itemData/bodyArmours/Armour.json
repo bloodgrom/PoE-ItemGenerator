@@ -1,0 +1,50 @@
+[
+  {
+    "baseType": "Plate Vest",
+    "itemLevel": 1,
+    "armourValue": "19-27",
+    "energyShieldValue": "0-0",
+    "evasionValue": "0-0",
+    "wardValue": "0-0"
+  },
+  {
+    "baseType": "Chestplate",
+    "itemLevel": 6,
+    "armourValue": "68-89",
+    "energyShieldValue": "0-0",
+    "evasionValue": "0-0",
+    "wardValue": "0-0"
+  },
+  {
+    "baseType": "Copper Plate",
+    "itemLevel": 17,
+    "armourValue": "176-221",
+    "energyShieldValue": "0-0",
+    "evasionValue": "0-0",
+    "wardValue": "0-0"
+  },
+  {
+    "baseType": "War Plate",
+    "itemLevel": 21,
+    "armourValue": "216-248",
+    "energyShieldValue": "0-0",
+    "evasionValue": "0-0",
+    "wardValue": "0-0"
+  },
+  {
+    "baseType": "Full Plate",
+    "itemLevel": 28,
+    "armourValue": "284-319",
+    "energyShieldValue": "0-0",
+    "evasionValue": "0-0",
+    "wardValue": "0-0"
+  },
+  {
+    "baseType": "Arena Plate",
+    "itemLevel": 32,
+    "armourValue": "324-389",
+    "energyShieldValue": "0-0",
+    "evasionValue": "0-0",
+    "wardValue": "0-0"
+  }
+]
