@@ -1,50 +1,54 @@
 [
   {
-    "prefixName": "Burning",
-    "prefixItemLevel": 15,
-    "prefixTier": 7,
+    "prefixName": "Fire Tier 1",
+    "prefixItemLevel": 83,
+    "prefixTier": 1,
     "prefixType": "Normal",
     "prefixGroupID": 66,
     "prefixText": "Adds %s to %s Fire Damage",
     "prefixInfluenceType": "None",
     "prefixTags": ["Attack", "Fire", "Elemental"],
-    "prefixValues": [16,30],
-    "prefixValuesRange": [12,19,27,34]
+    "prefixValues": [79,88],
+    "prefixValuesRange": [76,81,87,91],
+    "prefixWeight": 250
   },
   {
-    "prefixName": "Freezing",
-    "prefixItemLevel": 18,
-    "prefixTier": 6,
+    "prefixName": "Fire Tier 2",
+    "prefixItemLevel": 75,
+    "prefixTier": 2,
     "prefixType": "Normal",
-    "prefixGroupID": 65,
-    "prefixText": "Adds %s to %s Cold Damage",
+    "prefixGroupID": 66,
+    "prefixText": "Adds %s to %s Fire Damage",
     "prefixInfluenceType": "None",
-    "prefixTags": ["Attack", "Cold", "Elemental"],
-    "prefixValues": [18,34],
-    "prefixValuesRange": [14,22,31,38]
+    "prefixTags": ["Attack", "Fire", "Elemental"],
+    "prefixValues": [69,74],
+    "prefixValuesRange": [66,72,74,78],
+    "prefixWeight": 750
   },
   {
-    "prefixName": "Shocking",
-    "prefixItemLevel": 21,
-    "prefixTier": 5,
+    "prefixName": "Fire Tier 3",
+    "prefixItemLevel": 68,
+    "prefixTier": 3,
     "prefixType": "Normal",
-    "prefixGroupID": 64,
-    "prefixText": "Adds %s to %s Lightning Damage",
+    "prefixGroupID": 66,
+    "prefixText": "Adds %s to %s Fire Damage",
     "prefixInfluenceType": "None",
-    "prefixTags": ["Attack", "Lightning", "Elemental"],
-    "prefixValues": [9,52],
-    "prefixValuesRange": [7,11,49,57]
+    "prefixTags": ["Attack", "Fire", "Elemental"],
+    "prefixValues": [55,62],
+    "prefixValuesRange": [54,59,61,66],
+    "prefixWeight": 2000
   },
   {
-    "prefixName": "Bleeding",
-    "prefixItemLevel": 21,
-    "prefixTier": 6,
+    "prefixName": "Fire Tier 4",
+    "prefixItemLevel": 60,
+    "prefixTier": 4,
     "prefixType": "Normal",
-    "prefixGroupID": 64,
-    "prefixText": "Adds %s%% Chance to Bleed",
+    "prefixGroupID": 66,
+    "prefixText": "Adds %s to %s Fire Damage",
     "prefixInfluenceType": "None",
-    "prefixTags": ["Attack", "Physical"],
-    "prefixValues": [29],
-    "prefixValuesRange": [26,32]
+    "prefixTags": ["Attack", "Fire", "Elemental"],
+    "prefixValues": [46,53],
+    "prefixValuesRange": [43,48,51,53],
+    "prefixWeight": 3000
   }
 ]

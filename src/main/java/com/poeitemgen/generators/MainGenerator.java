@@ -138,9 +138,49 @@ public class MainGenerator {
 
         Prefix randomPrefix = null;
         boolean isPrefixValid = false;
+        int allPrefixWeight = 0;
 
         for(int i = 0; i < 100; i++) {
-            JSONObject randomModifierObject = (JSONObject) modifierArray.get(UtilMethods.getRandomNumberInRange(0,modifierArray.size() - 1));
+
+            //Weight calculations
+            if (allPrefixWeight == 0) {
+                for (Object prefix : modifierArray) {
+                    if (generatedItem.getItemLevel() >= (((Long) ((JSONObject) prefix).get("prefixItemLevel")).intValue())) {
+                        allPrefixWeight += (((Long) ((JSONObject) prefix).get("prefixWeight")).intValue());
+                    }
+                }
+            }
+
+            int randomWeight = UtilMethods.getRandomNumberInRange(1, allPrefixWeight);
+
+            int currentAccumulatedWeight = 0;
+            int currentAccumulatedWeightTemp = 0;
+            JSONObject randomModifierObject = null;
+
+            for (Object prefix : modifierArray) {
+
+                if (generatedItem.getItemLevel() >= (((Long) ((JSONObject) prefix).get("prefixItemLevel")).intValue())) {
+                    currentAccumulatedWeight += (((Long) ((JSONObject) prefix).get("prefixWeight")).intValue());
+
+                    if ((randomWeight > currentAccumulatedWeightTemp) && (randomWeight <= currentAccumulatedWeight)) {
+                        randomModifierObject = (JSONObject) prefix;
+                        break;
+                    }
+
+                    currentAccumulatedWeightTemp += (((Long) ((JSONObject) prefix).get("prefixWeight")).intValue());
+                }
+            }
+
+//            System.out.println("============================");
+//            System.out.println("Lower bound: " + currentAccumulatedWeightTemp);
+//            System.out.println("Selected weight: " + randomWeight);
+//            System.out.println("Upper bound: " + currentAccumulatedWeight);
+//            System.out.println("Selected modifier: " + (String) randomModifierObject.get("prefixName"));
+//            System.out.println("============================");
+
+            if (randomModifierObject == null) {
+                break;
+            }
 
             randomPrefix = new Prefix(
                     (String) randomModifierObject.get("prefixName"),
@@ -228,9 +268,42 @@ public class MainGenerator {
 
         Suffix randomSuffix = null;
         boolean isSuffixValid = false;
+        int allSuffixWeight = 0;
 
         for(int i = 0; i < 100; i++) {
-            JSONObject randomModifierObject = (JSONObject) modifierArray.get(UtilMethods.getRandomNumberInRange(0,modifierArray.size() - 1));
+
+            //Weight calculations
+            if (allSuffixWeight == 0) {
+                for (Object suffix : modifierArray) {
+                    if (generatedItem.getItemLevel() >= (((Long) ((JSONObject) suffix).get("suffixItemLevel")).intValue())) {
+                        allSuffixWeight += (((Long) ((JSONObject) suffix).get("suffixWeight")).intValue());
+                    }
+                }
+            }
+
+            int randomWeight = UtilMethods.getRandomNumberInRange(1, allSuffixWeight);
+
+            int currentAccumulatedWeight = 0;
+            int currentAccumulatedWeightTemp = 0;
+            JSONObject randomModifierObject = null;
+
+            for (Object suffix : modifierArray) {
+
+                if (generatedItem.getItemLevel() >= (((Long) ((JSONObject) suffix).get("suffixItemLevel")).intValue())) {
+                    currentAccumulatedWeight += (((Long) ((JSONObject) suffix).get("suffixWeight")).intValue());
+
+                    if ((randomWeight > currentAccumulatedWeightTemp) && (randomWeight <= currentAccumulatedWeight)) {
+                        randomModifierObject = (JSONObject) suffix;
+                        break;
+                    }
+
+                    currentAccumulatedWeightTemp += (((Long) ((JSONObject) suffix).get("suffixWeight")).intValue());
+                }
+            }
+
+            if (randomModifierObject == null) {
+                break;
+            }
 
             randomSuffix = new Suffix(
                     (String) randomModifierObject.get("suffixName"),

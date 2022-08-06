@@ -9,7 +9,8 @@
     "suffixInfluenceType": "None",
     "suffixTags": ["Attack", "Chaos"],
     "suffixValues": [46,55],
-    "suffixValuesRange": [41,48,53,60]
+    "suffixValuesRange": [41,48,53,60],
+    "suffixWeight": 1500
   },
   {
     "suffixName": "Confusing",
@@ -21,7 +22,8 @@
     "suffixInfluenceType": "None",
     "suffixTags": [],
     "suffixValues": [13],
-    "suffixValuesRange": [10,15]
+    "suffixValuesRange": [10,15],
+    "suffixWeight": 1500
   },
   {
     "suffixName": "Overpowering",
@@ -31,9 +33,10 @@
     "suffixGroupID": 345,
     "suffixText": "+%s to all Spell Gem Levels",
     "suffixInfluenceType": "None",
-    "suffixTags": ["Attack", "Lightning", "Elemental"],
+    "suffixTags": ["Attack", "Caster", "Elemental"],
     "suffixValues": [2],
-    "suffixValuesRange": [1,3]
+    "suffixValuesRange": [1,3],
+    "suffixWeight": 1500
   },
   {
     "suffixName": "Weakening",
@@ -43,8 +46,9 @@
     "suffixGroupID": 782,
     "suffixText": "Adds %s%% Chance to Weaken the Enemy by %s%%",
     "suffixInfluenceType": "None",
-    "suffixTags": ["Attack", "Physical"],
+    "suffixTags": ["Curse"],
     "suffixValues": [4,17],
-    "suffixValuesRange": [3,5,15,20]
+    "suffixValuesRange": [3,5,15,20],
+    "suffixWeight": 1500
   }
 ]
