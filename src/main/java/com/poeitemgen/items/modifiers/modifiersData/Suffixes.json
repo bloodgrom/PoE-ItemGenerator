@@ -39,6 +39,32 @@
     "suffixWeight": 1500
   },
   {
+    "suffixName": "EvasionPercent Tier 1",
+    "suffixItemLevel": 84,
+    "suffixTier": 1,
+    "suffixType": "Normal",
+    "suffixGroupID": 889,
+    "suffixText": "%s%% increased Evasion",
+    "suffixInfluenceType": "None",
+    "suffixTags": ["EvasionPercentIncrease", "Defence"],
+    "suffixValues": [115],
+    "suffixValuesRange": [110,120],
+    "suffixWeight": 1500000
+  },
+  {
+    "suffixName": "EvasionFlat Tier 1",
+    "suffixItemLevel": 75,
+    "suffixTier": 1,
+    "suffixType": "Normal",
+    "suffixGroupID": 890,
+    "suffixText": "+%s to Evasion",
+    "suffixInfluenceType": "None",
+    "suffixTags": ["EvasionFlatIncrease", "Defence"],
+    "suffixValues": [454],
+    "suffixValuesRange": [430,480],
+    "suffixWeight": 1500000
+  },
+  {
     "suffixName": "Weakening",
     "suffixItemLevel": 21,
     "suffixTier": 6,

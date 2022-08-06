@@ -31,7 +31,7 @@
     "prefixTier": 1,
     "prefixType": "Normal",
     "prefixGroupID": 676,
-    "prefixText": "%s to Armour",
+    "prefixText": "+%s to Armour",
     "prefixInfluenceType": "None",
     "prefixTags": ["ArmourFlatIncrease", "Defence"],
     "prefixValues": [184],

@@ -399,12 +399,12 @@ public class MainGenerator {
         int armourValueIncreasePercentLocal = 0;
         int evasionValueIncreasePercentLocal = 0;
         int energyShieldValueIncreasePercentLocal = 0;
-        int wardValueIncreaseIncreasePercentLocal = 0;
+        int wardValueIncreasePercentLocal = 0;
 
         int armourValueIncreaseFlatLocal = 0;
         int evasionValueIncreaseFlatLocal = 0;
         int energyShieldValueIncreaseFlatLocal = 0;
-        int wardValueIncreaseIncreaseFlatLocal = 0;
+        int wardValueIncreaseFlatLocal = 0;
 
 
         for (Prefix prefix : generatedItem.getPrefixSet()) {
@@ -415,9 +415,70 @@ public class MainGenerator {
             if (prefix.getPrefixTags().contains("ArmourFlatIncrease")) {
                 armourValueIncreaseFlatLocal += prefix.getPrefixValues().get(0);
             }
+
+            //Calculate evasion change
+            if (prefix.getPrefixTags().contains("EvasionPercentIncrease")) {
+                evasionValueIncreasePercentLocal += prefix.getPrefixValues().get(0);
+            }
+            if (prefix.getPrefixTags().contains("EvasionFlatIncrease")) {
+                evasionValueIncreaseFlatLocal += prefix.getPrefixValues().get(0);
+            }
+
+            //Calculate energy shield change
+            if (prefix.getPrefixTags().contains("EnergyShieldPercentIncrease")) {
+                energyShieldValueIncreasePercentLocal += prefix.getPrefixValues().get(0);
+            }
+            if (prefix.getPrefixTags().contains("EnergyShieldFlatIncrease")) {
+                energyShieldValueIncreaseFlatLocal += prefix.getPrefixValues().get(0);
+            }
+
+            //Calculate ward change
+            if (prefix.getPrefixTags().contains("WardPercentIncrease")) {
+                wardValueIncreasePercentLocal += prefix.getPrefixValues().get(0);
+            }
+            if (prefix.getPrefixTags().contains("WardFlatIncrease")) {
+                wardValueIncreaseFlatLocal += prefix.getPrefixValues().get(0);
+            }
+        }
+
+        for (Suffix suffix : generatedItem.getSuffixSet()) {
+            //Calculate armour change
+            if (suffix.getSuffixTags().contains("ArmourPercentIncrease")) {
+                armourValueIncreasePercentLocal += suffix.getSuffixValues().get(0);
+            }
+            if (suffix.getSuffixTags().contains("ArmourFlatIncrease")) {
+                armourValueIncreaseFlatLocal += suffix.getSuffixValues().get(0);
+            }
+
+            //Calculate evasion change
+            if (suffix.getSuffixTags().contains("EvasionPercentIncrease")) {
+                evasionValueIncreasePercentLocal += suffix.getSuffixValues().get(0);
+            }
+            if (suffix.getSuffixTags().contains("EvasionFlatIncrease")) {
+                evasionValueIncreaseFlatLocal += suffix.getSuffixValues().get(0);
+            }
+
+            //Calculate energy shield change
+            if (suffix.getSuffixTags().contains("EnergyShieldPercentIncrease")) {
+                energyShieldValueIncreasePercentLocal += suffix.getSuffixValues().get(0);
+            }
+            if (suffix.getSuffixTags().contains("EnergyShieldFlatIncrease")) {
+                energyShieldValueIncreaseFlatLocal += suffix.getSuffixValues().get(0);
+            }
+
+            //Calculate ward change
+            if (suffix.getSuffixTags().contains("WardPercentIncrease")) {
+                wardValueIncreasePercentLocal += suffix.getSuffixValues().get(0);
+            }
+            if (suffix.getSuffixTags().contains("WardFlatIncrease")) {
+                wardValueIncreaseFlatLocal += suffix.getSuffixValues().get(0);
+            }
         }
 
         ((BodyArmour) generatedItem).setArmourValue((((BodyArmour) generatedItem).getBaseArmourValue() + armourValueIncreaseFlatLocal) * (100 + armourValueIncreasePercentLocal) / 100);
+        ((BodyArmour) generatedItem).setEvasionValue((((BodyArmour) generatedItem).getBaseEvasionValue() + evasionValueIncreaseFlatLocal) * (100 + evasionValueIncreasePercentLocal) / 100);
+        ((BodyArmour) generatedItem).setEnergyShieldValue((((BodyArmour) generatedItem).getBaseEnergyShieldValue() + energyShieldValueIncreaseFlatLocal) * (100 + energyShieldValueIncreasePercentLocal) / 100);
+        ((BodyArmour) generatedItem).setWardValue((((BodyArmour) generatedItem).getBaseWardValue() + wardValueIncreaseFlatLocal) * (100 + wardValueIncreasePercentLocal) / 100);
 
     }
 }
