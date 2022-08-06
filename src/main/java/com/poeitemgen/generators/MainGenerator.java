@@ -78,6 +78,14 @@ public class MainGenerator {
             JSONObject selectedBase = parsedRandomBase(jsonFilePathArmour);
 
             generatedBodyArmour.setBaseType((String) selectedBase.get("baseType"));
+
+            //Set base value
+            generatedBodyArmour.setBaseArmourValue(UtilMethods.parseRandomValueInRange((String) selectedBase.get("armourValue")));
+            generatedBodyArmour.setBaseEnergyShieldValue(UtilMethods.parseRandomValueInRange((String) selectedBase.get("energyShieldValue")));
+            generatedBodyArmour.setBaseEvasionValue((UtilMethods.parseRandomValueInRange((String) selectedBase.get("evasionValue"))));
+            generatedBodyArmour.setBaseWardValue(UtilMethods.parseRandomValueInRange((String) selectedBase.get("wardValue")));
+
+            //Set total values after modifiers
             generatedBodyArmour.setArmourValue(UtilMethods.parseRandomValueInRange((String) selectedBase.get("armourValue")));
             generatedBodyArmour.setEnergyShieldValue(UtilMethods.parseRandomValueInRange((String) selectedBase.get("energyShieldValue")));
             generatedBodyArmour.setEvasionValue((UtilMethods.parseRandomValueInRange((String) selectedBase.get("evasionValue"))));
@@ -99,7 +107,7 @@ public class MainGenerator {
                 }
             }
 
-
+            calculateItemDefenceValues(generatedBodyArmour);
         }
 
 
@@ -383,6 +391,33 @@ public class MainGenerator {
         }
 
         return randomSuffix;
+
+    }
+
+    public static void calculateItemDefenceValues(Item generatedItem) {
+
+        int armourValueIncreasePercentLocal = 0;
+        int evasionValueIncreasePercentLocal = 0;
+        int energyShieldValueIncreasePercentLocal = 0;
+        int wardValueIncreaseIncreasePercentLocal = 0;
+
+        int armourValueIncreaseFlatLocal = 0;
+        int evasionValueIncreaseFlatLocal = 0;
+        int energyShieldValueIncreaseFlatLocal = 0;
+        int wardValueIncreaseIncreaseFlatLocal = 0;
+
+
+        for (Prefix prefix : generatedItem.getPrefixSet()) {
+            //Calculate armour change
+            if (prefix.getPrefixTags().contains("ArmourPercentIncrease")) {
+                armourValueIncreasePercentLocal += prefix.getPrefixValues().get(0);
+            }
+            if (prefix.getPrefixTags().contains("ArmourFlatIncrease")) {
+                armourValueIncreaseFlatLocal += prefix.getPrefixValues().get(0);
+            }
+        }
+
+        ((BodyArmour) generatedItem).setArmourValue((((BodyArmour) generatedItem).getBaseArmourValue() + armourValueIncreaseFlatLocal) * (100 + armourValueIncreasePercentLocal) / 100);
 
     }
 }

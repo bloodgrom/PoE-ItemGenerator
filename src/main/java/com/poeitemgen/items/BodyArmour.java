@@ -32,10 +32,14 @@ public class BodyArmour extends Item{
         }
     }
 
-    int armourValue = 652;
-    int energyShieldValue = 119;
+    int armourValue = 0;
+    int energyShieldValue = 0;
     int evasionValue = 0;
     int wardValue = 0;
+    int baseArmourValue = 0;
+    int baseEnergyShieldValue = 0;
+    int baseEvasionValue = 0;
+    int baseWardValue = 0;
     String baseType = "";
 
     // ---------------------------------------------------------------------------------------------
@@ -95,6 +99,38 @@ public class BodyArmour extends Item{
 
     public void setWardValue(int wardValue) {
         this.wardValue = wardValue;
+    }
+
+    public int getBaseArmourValue() {
+        return baseArmourValue;
+    }
+
+    public void setBaseArmourValue(int baseArmourValue) {
+        this.baseArmourValue = baseArmourValue;
+    }
+
+    public int getBaseEnergyShieldValue() {
+        return baseEnergyShieldValue;
+    }
+
+    public void setBaseEnergyShieldValue(int baseEnergyShieldValue) {
+        this.baseEnergyShieldValue = baseEnergyShieldValue;
+    }
+
+    public int getBaseEvasionValue() {
+        return baseEvasionValue;
+    }
+
+    public void setBaseEvasionValue(int baseEvasionValue) {
+        this.baseEvasionValue = baseEvasionValue;
+    }
+
+    public int getBaseWardValue() {
+        return baseWardValue;
+    }
+
+    public void setBaseWardValue(int baseWardValue) {
+        this.baseWardValue = baseWardValue;
     }
 
     public String getBaseType() {

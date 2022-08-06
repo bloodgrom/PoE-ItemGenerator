@@ -27,7 +27,7 @@ public class HelloApplication extends Application {
 
         Item generatedItem = MainGenerator.generateItem("Armour", 75, "Rare");
 
-        generatedItem.printItemText("Advanced");
+        generatedItem.printItemText("Normal");
 
 
         exit();
